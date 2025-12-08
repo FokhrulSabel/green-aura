@@ -1,10 +1,13 @@
 import React from 'react';
+import CoverflowSwiper from '../components/CoverflowSwiper';
 
 const Home = () => {
     return (
-        <div>
-            <h2>home</h2>
-        </div>
+        <main>
+            <section>
+                <CoverflowSwiper/>
+            </section>
+        </main>
     );
 };
 
