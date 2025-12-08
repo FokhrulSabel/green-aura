@@ -1,2 +1,16 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #2E7D4D;
+  --color-secondary: #32cd32;
+  --color-base-200: #1F5A36;
+  --color-base-300: #228b22;
+  --color-accent: #93c572;
+}
+
+* {
+  font-family: "Gentium Book Plus", serif;
+}

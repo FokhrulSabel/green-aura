@@ -1,7 +1,24 @@
 import { createBrowserRouter } from "react-router";
+import HomeLayout from "../layouts/HomeLayout";
+import Home from "../pages/Home";
+import AuthLayout from "../layouts/AuthLayout";
+
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello World</div>,
+    element: <HomeLayout/>,
+  },
+  {
+    path: "/auth",
+    element:<AuthLayout/>,
+  },
+  {
+    path: "/profile",
+    element: <h2>my profile</h2>,
+  },
+  {
+    path: "/*",
+    element: <h2>Error404</h2>,
   },
 ]);
+export default router;
