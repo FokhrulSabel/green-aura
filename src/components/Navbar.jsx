@@ -4,7 +4,6 @@ import { Link, NavLink } from "react-router";
 const Navbar = () => {
   return (
     <div className="flex justify-between items-center">
-
       <div className="navbar-start">
         <h1 className="text-[#008000] text-xl font-bold">GreenAura</h1>
       </div>
@@ -15,9 +14,12 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end login-btn flex gap-1">
-        <img src="" alt="" />
-        <Link className="btn btn-primary px-10 ">Login</Link>
-        <Link className="btn btn-primary px-10 ">Register</Link>
+        <Link to="/auth/login" className="btn btn-primary px-10 ">
+          Login
+        </Link>
+        <Link to="/auth/register" className="btn btn-primary px-10 ">
+          Register
+        </Link>
       </div>
     </div>
   );
