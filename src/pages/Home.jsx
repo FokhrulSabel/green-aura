@@ -1,6 +1,9 @@
 import React from "react";
 import CoverflowSwiper from "../components/CoverflowSwiper";
 import TopRatedIndoorPlants from "./TopRatedIndoorPlants";
+import PlantCareTips from "./PlantCareTips";
+import MeetOurGreenExperts from "./MeetOurGreenExperts";
+import EcoDecorIdeas from "./EcoDecorIdeas";
 
 const Home = () => {
   return (
@@ -10,6 +13,9 @@ const Home = () => {
       </section>
 
       <TopRatedIndoorPlants></TopRatedIndoorPlants>
+      <PlantCareTips></PlantCareTips>
+      <MeetOurGreenExperts></MeetOurGreenExperts>
+      <EcoDecorIdeas></EcoDecorIdeas>
     </main>
   );
 };
