@@ -32,7 +32,7 @@
     "availableStock": 10,
     "careLevel": "Moderate",
     "description": "A beautiful flowering plant that improves indoor air quality and thrives in shaded areas.",
-    "image": "https://images.pexels.com/photos/5699662/pexels-photo-5699662.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "image": "../src/assets/PeaceLilyLarge.webp",
     "providerName": "GreenNest Gardens"
   },
   {
@@ -44,7 +44,7 @@
     "availableStock": 8,
     "careLevel": "Moderate",
     "description": "A trendy tropical plant with iconic split leaves, perfect for modern interior decor.",
-    "image": "https://images.pexels.com/photos/3076899/pexels-photo-3076899.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "image": "../src/assets/MonsteraDeliciosa.webp",
     "providerName": "Leaf & Root Studio"
   },
   {
@@ -56,7 +56,7 @@
     "availableStock": 14,
     "careLevel": "Easy",
     "description": "A tall, lush indoor palm known for improving humidity and providing a tropical feel.",
-    "image": "https://images.pexels.com/photos/4751978/pexels-photo-4751978.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "image": "../src/assets/ArecaPalm.webp",
     "providerName": "UrbanGreen Studio"
   },
   {
@@ -68,7 +68,7 @@
     "availableStock": 16,
     "careLevel": "Easy",
     "description": "A nearly indestructible plant that survives in very low light and minimal watering.",
-    "image": "https://images.pexels.com/photos/4505161/pexels-photo-4505161.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "image": "../src/assets/ZZPlant.webp",
     "providerName": "GreenRoots Depot"
   },
   {
@@ -80,7 +80,7 @@
     "availableStock": 11,
     "careLevel": "Moderate",
     "description": "A stylish indoor plant with thick glossy leaves that elevates any living room setup.",
-    "image": "https://images.pexels.com/photos/3076895/pexels-photo-3076895.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "image": "../src/assets/RubberPlant.webp",
     "providerName": "EcoLeaf Supplies"
   },
   {
@@ -92,7 +92,7 @@
     "availableStock": 18,
     "careLevel": "Easy",
     "description": "A popular indoor plant known for removing toxins and producing baby spiderettes.",
-    "image": "https://images.pexels.com/photos/5699671/pexels-photo-5699671.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "image": "../src/assets/SpiderPlantOcean.webp",
     "providerName": "UrbanGreen Studio"
   },
   {
@@ -104,7 +104,7 @@
     "availableStock": 9,
     "careLevel": "Hard",
     "description": "A lush fern that thrives in humid environments and brings a refreshing green look.",
-    "image": "https://images.pexels.com/photos/5699673/pexels-photo-5699673.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "image": "../src/assets/boston_fern.webp",
     "providerName": "Leaf & Root Studio"
   },
   {
@@ -116,7 +116,7 @@
     "availableStock": 25,
     "careLevel": "Easy",
     "description": "A compact succulent considered a symbol of good luck and financial prosperity.",
-    "image": "https://images.pexels.com/photos/4505163/pexels-photo-4505163.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "image": "../src/assets/Jade-Crassula.webp",
     "providerName": "EcoLeaf Supplies"
   },
   {
@@ -128,7 +128,7 @@
     "availableStock": 13,
     "careLevel": "Easy",
     "description": "A versatile indoor plant with patterned leaves, thriving beautifully in low-light areas.",
-    "image": "https://images.pexels.com/photos/5699666/pexels-photo-5699666.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "image": "../src/assets/Chinese Evergreen.jpg",
     "providerName": "GreenNest Gardens"
   },
   {
@@ -140,7 +140,7 @@
     "availableStock": 7,
     "careLevel": "Moderate",
     "description": "A fragrant herb plant known for calming aroma and beautiful purple flowers.",
-    "image": "https://images.pexels.com/photos/620808/pexels-photo-620808.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "image": "../src/assets/Lavender.webp",
     "providerName": "NatureCare Hub"
   }
 ]
