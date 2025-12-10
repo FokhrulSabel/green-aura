@@ -12,11 +12,6 @@ const HomeLayout = () => {
       </nav>
 
       <main>
-        {/* <div className="grid grid-cols-12 gap-3 justify-items-center">
-          <div>
-            <TopRatedIndoorPlants></TopRatedIndoorPlants>
-          </div>
-        </div> */}
         <Outlet></Outlet>
       </main>
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-const PlantsCard = ({ plant }) => {
+const PlantCard = ({ plant }) => {
   return (
     <div
       className="w-full my-5 mx-auto rounded-xl bg-white shadow-md 
@@ -29,7 +29,7 @@ const PlantsCard = ({ plant }) => {
         </div>
 
         <Link
-          to={`/plant/${plant.plantId}`}
+          to={`/plantdetails/${plant.plantId}`}
           className="btn btn-primary w-full text-white font-semibold"
         >
           View Details
@@ -39,4 +39,4 @@ const PlantsCard = ({ plant }) => {
   );
 };
 
-export default PlantsCard;
+export default PlantCard;

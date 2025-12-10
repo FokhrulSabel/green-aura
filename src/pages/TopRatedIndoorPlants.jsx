@@ -1,5 +1,5 @@
 import React from "react";
-import PlantsCard from "../components/PlantsCard";
+import PlantCard from "../components/PlantCard";
 import usePlants from "../Hooks/usePlants";
 
 const TopRatedIndoorPlants = () => {
@@ -12,7 +12,7 @@ const TopRatedIndoorPlants = () => {
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 justify-items-center">
         {plants.map((plant) => (
-          <PlantsCard plant={plant} key={plant.plantId}></PlantsCard>
+          <PlantCard plant={plant} key={plant.plantId}></PlantCard>
         ))}
       </div>
     </div>

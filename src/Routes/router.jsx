@@ -4,6 +4,9 @@ import Home from "../pages/Home";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import PrivateRoute from "../provider/PrivateRoute";
+import PlantDetails from "../pages/PlantDetails";
+import LoadingPage from "../pages/LoadingPage";
 
 export const router = createBrowserRouter([
   {
@@ -26,9 +29,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/auth/register",
-        element: <Register/>,
+        element: <Register />,
       },
     ],
+  },
+  {
+    path: "/plantdetails/:plantId",
+    element: (
+      <PrivateRoute>
+        <PlantDetails></PlantDetails>
+      </PrivateRoute>
+    ),
+    loader: () => fetch("/plants.json"),
+    hydrateFallbackElement: <LoadingPage></LoadingPage>
   },
   {
     path: "/profile",
