@@ -26,6 +26,7 @@ const PlantDetails = () => {
   });
 
   const handleChange = (e) => {
+    e.preventDefault();
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -44,54 +45,101 @@ const PlantDetails = () => {
       </nav>
       <main className="flex flex-col justify-between items-center my-10">
         {/* Details */}
-        <div className="flex flex-col lg:flex-row justify-center items-center gap-6 w-full ">
-          <div className="w-[30%] flex lg:justify-end">
-            <img src={plant.image} alt="" />
+        <div className="bg-gradient-to-b from-green-50 via-white to-white py-20">
+          <div className="w-full lg:w-10/12 mx-auto py-5 px-4 lg:px-20">
+            <div className="card lg:card-side bg-base-100 shadow-xl my-8 border-t-8 border-green-600">
+              {/* Left: Image */}
+              <figure className="lg:w-1/2">
+                <img
+                  src={plant.image}
+                  alt={plant.plantName}
+                  className="w-full h-full object-cover"
+                />
+              </figure>
+
+              {/* Right: Content */}
+              <div className="p-6 lg:w-1/2 space-y-4">
+                <h2 className="text-3xl font-bold text-green-600">
+                  {plant.plantName}
+                </h2>
+
+                <p className="text-green-800 font-semibold">{plant.category}</p>
+
+                <p className="text-neutral-600">{plant.description}</p>
+
+                {/* Price + Rating */}
+                <div className="flex justify-between items-center py-5">
+                  <p className="px-8 rounded-md py-2 font-semibold bg-green-600 text-white hover:bg-green-800 transition-all">
+                    {plant.price} $
+                  </p>
+
+                  <p className="flex items-center gap-2 font-semibold px-6">
+                    <FaStar className="text-yellow-400 size-4" />
+                    {plant.rating}
+                  </p>
+                </div>
+
+                {/* Table Data */}
+                <table className="table">
+                  <tbody>
+                    <tr>
+                      <th>Available:</th>
+                      <td>
+                        {plant.availableStock > 0
+                          ? `${plant.availableStock} available`
+                          : "Out of stock"}
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <th>Care Level:</th>
+                      <td>{plant.careLevel}</td>
+                    </tr>
+
+                    <tr>
+                      <th>Provider:</th>
+                      <td className="text-accent font-bold">
+                        {plant.providerName}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
-          <div className="flex flex-col items-center lg:items-start justify-between gap-2">
-            <h1 className="text-lg">
-              Plant Title:{" "}
-              <span className="text-2xl font-bold lg:text-2xl text-base-300 font-bold">
-                {plant.plantName}
-              </span>
-            </h1>
-            <h1 className="text-lg">
-              Provider:{" "}
-              <span className="text-xl text-accent font-bold">
-                {plant.providerName}
-              </span>
-            </h1>
-            <div className="flex flex-row items-center gap-2">
-              <p className="text-md text-accent bg-base-200 border rounded-2xl py-1 px-3">
-                {plant.category}
-              </p>
-              <p className="text-md text-accent bg-base-100 border rounded-2xl py-1 px-3">
-                {plant.careLevel}
-              </p>
-            </div>
-            <p className="text-center text-md text-base-300 my-2">
-              {plant.description}
-            </p>
-            <p className="text-lg">
-              Available in Stock:{" "}
-              <span className="text-xl text-base-300 font-bold">
-                {plant.availableStock}
-              </span>
-            </p>
+        </div>
+        {/* Booking Consultant */}
+        <div className="shadow-xl max-w-2xl mx-auto my-15 p-10 bg-white rounded-xl">
+          <h1 className="text-3xl text-base-300 mt-10">Book Consultation</h1>
+          <div className="mx-auto w-full max-w-sm shadow-2xl bg-base-200 rounded mt-5">
+            <form className="card-body" onSubmit={handleSubmit}>
+              <fieldset className="fieldset">
+                <label className="label">Name</label>
+                <input
+                  name="name"
+                  type="text"
+                  className="input"
+                  placeholder="Name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+                <label className="label">Email</label>
+                <input
+                  type="email"
+                  className="input"
+                  placeholder="Email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                />
 
-            <div className="flex flex-row items-center gap-2">
-              <div className="flex flex-row items-center gap-1 bg-base-100 border  rounded-lg py-2 px-3">
-                <IoMdPricetags className="text-base-300" />
-                <p className="text-xl text-base-300 ">
-                  {plant.price} <span>$</span>
-                </p>
-              </div>
-
-              <div className="flex flex-row items-center gap-1 bg-base-100 border border-green-700 rounded-lg py-2 px-3">
-                <FaStar className="text-base-300" />
-                <p className="text-xl text-base-300 ">{plant.rating}</p>
-              </div>
-            </div>
+                <button type="submit" className="btn btn-primary mt-4">
+                  Book Now
+                </button>
+              </fieldset>
+            </form>
           </div>
         </div>
       </main>
