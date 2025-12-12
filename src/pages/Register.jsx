@@ -1,14 +1,30 @@
 import React, { useState, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [error, setError] = useState("");
-  const { createUser, setUser } = useContext(AuthContext);
+  const { createUser, setUser ,googleSignIn, } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+    .then((result) => {
+      const user = result.user;
+      setUser(user);
+      navigate(`${location.state ? location.state : "/"}`);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      setError(errorCode);
+    })
+    toast.error("Sign Up unsuccessful!");
+  };
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -102,6 +118,18 @@ const Register = () => {
                 <button type="submit" className="btn btn-primary mt-4">
                   Register
                 </button>
+                <div>
+                  <div className="divider">OR</div>
+
+                  <button
+                    type="button"
+                    onClick={handleGoogleSignIn}
+                    className="btn btn-outline w-full flex items-center justify-center gap-2"
+                  >
+                    <FcGoogle size={25} />
+                    Continue with Google
+                  </button>
+                </div>
                 <p>
                   Already Have an Account?<span> </span>
                   <Link to="/auth/login" className="text-primary font-bold">

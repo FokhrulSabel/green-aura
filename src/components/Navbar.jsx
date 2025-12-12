@@ -1,18 +1,18 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
+import { MdLogout, MdOutlineLogin } from "react-icons/md";
 
 const Navbar = () => {
-  const { user,logOut } = use(AuthContext);
+  const { user, logOut } = use(AuthContext);
 
   const handleLogOut = () => {
-    
     logOut()
       .then(() => {
         alert("logged out successfully");
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
       });
   };
   return (
@@ -30,22 +30,20 @@ const Navbar = () => {
         <div className="navbar-end login-btn flex gap-1">
           {user ? (
             <button onClick={handleLogOut} className="btn btn-primary p-3">
+              <MdLogout size={18} />
               Log Out
             </button>
           ) : (
             <Link to="/auth/login" className="btn btn-primary p-3">
+              <MdOutlineLogin size={18} />
               Log In
             </Link>
+            
+            
           )}
-          {/* <Link to="/auth/login" className="btn btn-primary px-10 ">
-          Login
-        </Link>
-        <Link to="/auth/register" className="btn btn-primary px-10 ">
-          Register
-        </Link> */}
         </div>
       </div>
-      <div>{user && user.email}</div>
+      {/* <div>{user && user.email}</div> */}
     </div>
   );
 };

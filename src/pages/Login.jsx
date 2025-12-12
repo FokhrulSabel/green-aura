@@ -1,10 +1,12 @@
 import React, { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const [error, setError] = useState("");
-  const { logIn } = use(AuthContext);
+  const { logIn, setUser, googleSignIn } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -14,11 +16,12 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
+    // console.log(email, password);
     logIn(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        setUser(user);
+        // console.log(user);
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
@@ -26,7 +29,22 @@ const Login = () => {
         // const errorMessage = error.message;
         // alert(errorCode, errorMessage);
         setError(errorCode);
+        toast.error("Wrong email or password. Log In unsuccessful!");
       });
+  };
+
+  const handleGoogleLogin = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        setError(errorCode);
+      });
+    toast.error("Log In unsuccessful!");
   };
   return (
     <div>
@@ -63,6 +81,18 @@ const Login = () => {
                 <button type="submit" className="btn btn-primary mt-4">
                   Login
                 </button>
+                <div>
+                  <div className="divider">OR</div>
+
+                  <button
+                    type="button"
+                    onClick={handleGoogleLogin}
+                    className="btn btn-outline w-full flex items-center justify-center gap-2"
+                  >
+                    <FcGoogle size={25} />
+                    Continue with Google
+                  </button>
+                </div>
                 <p>
                   Don't Have an Account?<span> </span>
                   <Link to="/auth/register" className="text-primary font-bold">
