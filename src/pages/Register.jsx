@@ -8,21 +8,22 @@ const Register = () => {
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [error, setError] = useState("");
-  const { createUser, setUser ,googleSignIn, } = useContext(AuthContext);
+  const { createUser, setUser, googleSignIn, updateUser } =
+    useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-    .then((result) => {
-      const user = result.user;
-      setUser(user);
-      navigate(`${location.state ? location.state : "/"}`);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      setError(errorCode);
-    })
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        setError(errorCode);
+      });
     toast.error("Sign Up unsuccessful!");
   };
 
@@ -36,6 +37,7 @@ const Register = () => {
     } else {
       setNameError("");
     }
+    const url = form.url.value;
     const email = form.email.value;
     const password = form.password.value;
 
@@ -55,7 +57,16 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        setUser(user);
+        updateUser({ displayName: name, photoURL: url })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: url });
+            navigate("./");
+          })
+          .catch((error) => {
+            // setUser(user);
+            setUser({ ...user, displayName: name, photoURL: url });
+          });
+
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
