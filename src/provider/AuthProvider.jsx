@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -13,8 +14,6 @@ import toast from "react-hot-toast";
 // import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
-
-
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -32,14 +31,34 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const googleSignIn=() => {
+  const googleSignIn = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
-  }
+  };
 
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
+  };
+
+  const updateUser = (updatedData) => {
+    if (!auth.currentUser) return;
+    return updateProfile(auth.currentUser, updatedData).then(() => {
+      setUser({ ...auth.currentUser, ...updatedData });
+    });
+  };
+
+  const forgotPassword = (email) => {
+    setLoading(true);
+    return sendPasswordResetEmail(auth, email)
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        const errorCode = error.code;
+        toast.error("Failed to send reset email!");
+      });
   };
 
   useEffect(() => {
@@ -52,14 +71,6 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-   const updateUser = (updatedData) =>{
-    if (!auth.currentUser) return;
-    return updateProfile(auth.currentUser, updatedData)
-    .then(() => {
-      setUser({ ...auth.currentUser, ...updatedData });
-    })
-   }
-
   const authData = {
     user,
     setUser,
@@ -70,8 +81,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     setLoading,
     updateUser,
-    
-    
+    forgotPassword,
   };
 
   return (

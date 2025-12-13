@@ -9,6 +9,7 @@ import PlantDetails from "../pages/PlantDetails";
 import LoadingPage from "../pages/LoadingPage";
 import TopRatedIndoorPlants from "../pages/TopRatedIndoorPlants";
 import MyProfile from "../pages/MyProfile";
+import ForgotPassword from "../pages/ForgotPassword";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
         path: "/auth/register",
         element: <Register />,
       },
+      {
+        path: "/auth/forgotpassword",
+        element: <ForgotPassword></ForgotPassword>,
+      }
     ],
   },
   {

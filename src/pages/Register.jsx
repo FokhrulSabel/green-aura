@@ -4,6 +4,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 // import { toast } from "react-toastify";
 import toast, { Toaster } from "react-hot-toast";
+import { BiSolidHide, BiSolidShow } from "react-icons/bi";
 
 const Register = () => {
   const [nameError, setNameError] = useState("");
@@ -117,13 +118,28 @@ const Register = () => {
                   required
                 />
                 <label className="label">Password</label>
-                <input
-                  name="password"
-                  type="password"
-                  className="input"
-                  placeholder="Password"
-                  required
-                />
+                <div className="relative w-full">
+                  <input
+                    type={hidePassword ? "password" : "text"}
+                    placeholder="Enter your password"
+                    value={password}
+                    name="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="input w-full pr-12"
+                    required
+                  />
+                  <span
+                    className="absolute right-3 top-3 cursor-pointer "
+                    onClick={() => setHidePassword(!hidePassword)}
+                  >
+                    {hidePassword ? (
+                      <BiSolidShow size={20} className="text-base-300" />
+                    ) : (
+                      <BiSolidHide size={20} className="text-base-300" />
+                    )}{" "}
+                    {/* ✅ icon */}
+                  </span>
+                </div>
                 {passwordError && (
                   <p className="text-xs text-error">{passwordError}</p>
                 )}
