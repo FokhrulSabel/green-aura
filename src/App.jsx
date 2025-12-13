@@ -1,9 +1,10 @@
 import "./App.css";
+import { Toaster } from 'react-hot-toast'
 
 function App() {
   return (
     <>
-      <h1>GreenAura</h1>
+      <Toaster position="top-right" /> 
     </>
   );
 }

@@ -2,7 +2,8 @@ import React, { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
-import toast, { Toaster } from "react-hot-toast";
+// import toast, { Toaster } from "react-hot-toast";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -38,13 +39,15 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        toast.success("Logged in with Google!");
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         const errorCode = error.code;
         setError(errorCode);
+        toast.error("Log In unsuccessful!");
       });
-    toast.error("Log In unsuccessful!");
+    
   };
   return (
     <div>

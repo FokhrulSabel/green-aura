@@ -1,19 +1,20 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 import { HiMenu, HiX } from "react-icons/hi";
 import { MdLogout, MdOutlineLogin } from "react-icons/md";
 import { LiaUserPlusSolid } from "react-icons/lia";
 
+
 const Navbar = () => {
-  const { user, logOut } = React.useContext(AuthContext);
+  const { user, logOut } = use(AuthContext);
 
   const [dropdown, setDropdown] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const dropdownRef = useRef(null);
 
-  // Close user dropdown when clicking outside
+  // dropdown close
   useEffect(() => {
     const handler = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -34,10 +35,7 @@ const Navbar = () => {
 
   return (
     <header className="w-full">
-      {/* MAIN NAVBAR */}
       <div className="bg-white rounded-full shadow-sm px-4 py-3 flex justify-between items-center">
-
-        {/* LEFT: Hamburger + Logo */}
         <div className="flex items-center gap-3">
           <button
             onClick={() => setMobileMenu(true)}
@@ -52,16 +50,13 @@ const Navbar = () => {
           </h1>
         </div>
 
-        {/* DESKTOP MENU */}
         <nav className="hidden lg:flex items-center gap-6">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/plants">Plants</NavLink>
           <NavLink to="/profile">My Profile</NavLink>
         </nav>
 
-        {/* RIGHT SECTION */}
         <div className="relative flex items-center gap-3" ref={dropdownRef}>
-          {/* USER PHOTO */}
           {user && (
             <img
               src={user.photoURL}
@@ -71,17 +66,25 @@ const Navbar = () => {
             />
           )}
 
-          {/* LOGIN BUTTON (looks like screenshot) */}
           {!user && (
-            <Link
-              to="/auth/login"
-              className="px-5 py-1.5 border border-green-600 text-green-600 rounded-full hover:bg-green-50 transition font-medium"
-            >
-              Login
-            </Link>
+            <div className="flex items-center gap-3">
+              <Link
+                to="/auth/login"
+                className="px-5 py-1.5 border border-green-600 text-green-600 rounded-full hover:bg-green-50 transition font-medium flex items-center gap-2"
+              ><MdOutlineLogin size={18} />
+                Login
+              </Link>
+
+              <Link
+                to="/auth/register"
+                className="px-5 py-1.5 bg-green-600 text-white rounded-full hover:bg-green-700 transition font-medium flex items-center gap-2"
+              ><LiaUserPlusSolid size={18} />
+                Register
+              </Link>
+            </div>
           )}
 
-          {/* USER DROPDOWN */}
+          {/* DROPDOWN */}
           {user && dropdown && (
             <div className="absolute right-0 top-12 bg-white shadow-lg p-4 rounded-lg w-48 flex flex-col gap-2">
               <span className="font-semibold">{user.displayName}</span>
@@ -98,13 +101,11 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* MOBILE SLIDE-IN MENU (LEFT SIDE) */}
       <div
         className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ${
           mobileMenu ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        {/* Close Button */}
         <div className="flex justify-between items-center px-4 py-4 border-b">
           <h2 className="text-xl font-bold">
             <span className="text-black">Green</span>
@@ -116,7 +117,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Links */}
         <nav className="flex flex-col p-4 gap-4 text-lg">
           <NavLink to="/" onClick={() => setMobileMenu(false)}>
             Home

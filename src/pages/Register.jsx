@@ -1,28 +1,29 @@
-import React, { useState, useContext } from "react";
+import React, { useState, use } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
+// import { toast } from "react-toastify";
 import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [error, setError] = useState("");
-  const { createUser, setUser, googleSignIn, updateUser } =
-    useContext(AuthContext);
+  const { createUser, setUser, googleSignIn, updateUser } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+  const [password, setPassword] = useState("");
+  const [hidePassword, setHidePassword] = useState(true);
 
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
         setUser(user);
-        navigate(`${location.state ? location.state : "/"}`);
+        navigate(location.state ? location.state : "/");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        setError(errorCode);
+        setError(error.code);
       });
     toast.error("Sign Up unsuccessful!");
   };
@@ -74,6 +75,7 @@ const Register = () => {
         // const errorMessage = error.message;
         // alert(errorMessage);
         setError(errorCode);
+        toast.error("Sign Up unsuccessful!");
       });
   };
   return (

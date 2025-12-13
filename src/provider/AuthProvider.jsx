@@ -6,10 +6,15 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
+import toast from "react-hot-toast";
+// import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
+
+
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -47,15 +52,26 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+   const updateUser = (updatedData) =>{
+    if (!auth.currentUser) return;
+    return updateProfile(auth.currentUser, updatedData)
+    .then(() => {
+      setUser({ ...auth.currentUser, ...updatedData });
+    })
+   }
+
   const authData = {
     user,
     setUser,
+    loading,
     createUser,
     logIn,
-    logOut,
-    loading,
-    setLoading,
     googleSignIn,
+    logOut,
+    setLoading,
+    updateUser,
+    
+    
   };
 
   return (
