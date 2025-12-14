@@ -1,16 +1,98 @@
-# React + Vite
+# 🌿 GreenAura – Indoor Plant Care & Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+GreenAura is a modern, responsive single-page web application built for plant lovers who want to explore, learn, and purchase indoor plants with ease.  
+The platform combines a clean UI, smooth user experience, and secure authentication to deliver an industry-level frontend project.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Project Purpose
 
-## React Compiler
+The main goal of GreenAura is to:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Provide a visually appealing platform for browsing indoor plants
+- Educate users with plant care information
+- Allow users to securely register and log in
+- Demonstrate real-world frontend development skills using React ecosystem tools
 
-## Expanding the ESLint configuration
+This project was developed as part of a frontend development assignment to showcase **React, routing, authentication, state management, and UI design best practices**.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🌐 Live Website
+
+🔗 **Live URL:**  
+https://green-aura-nature.netlify.app/
+
+---
+
+## ✨ Key Features
+
+- 🌱 **Top Rated Indoor Plants Section**  
+  Displays featured plants with ratings, prices, and images.
+
+- 🔍 **Plant Details Page**  
+  Shows full information including care level, category, provider, and description.
+
+- 👤 **User Authentication**  
+  - Email & Password login/register
+  - Google Sign-In with Firebase Authentication
+
+- 🔐 **Protected Routes**  
+  Certain pages are accessible only after login.
+
+- 📱 **Fully Responsive Design**  
+  Optimized for mobile, tablet, and desktop devices.
+
+- 📂 **Dynamic Data Rendering**  
+  Plant data rendered dynamically from JSON.
+
+- 🍞 **Toast Notifications**  
+  User-friendly success and error messages for authentication actions.
+
+- 🧭 **Modern Navigation System**  
+  Desktop navbar and mobile side-drawer menu.
+
+---
+
+## 🛠️ Technologies & Packages Used
+
+### Core Technologies
+- **React** – Component-based UI development
+- **Vite** – Fast development server and build tool
+- **JavaScript (ES6+)**
+
+### Routing
+- **react-router-dom** – Client-side routing and protected routes
+
+### Authentication
+- **Firebase Authentication**
+  - Email/Password authentication
+  - Google OAuth login
+
+### Styling
+- **Tailwind CSS** – Utility-first CSS framework
+- **DaisyUI** – Prebuilt Tailwind components
+
+### UI Enhancements
+- **react-icons** – Icon library
+- **react-hot-toast** – Toast notifications
+
+### Deployment
+- **Netlify** – Hosting and continuous deployment
+
+---
+
+---
+
+## 🚀 How to Run Locally
+
+```bash
+npm install
+npm run dev
+
+👨‍💻 Author
+
+Fokhrul
+Frontend Developer (React)
+
+
