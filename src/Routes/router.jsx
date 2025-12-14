@@ -11,6 +11,7 @@ import TopRatedIndoorPlants from "../pages/TopRatedIndoorPlants";
 import MyProfile from "../pages/MyProfile";
 import ForgotPassword from "../pages/ForgotPassword";
 import ErrorPage from "../pages/ErrorPage";
+import Plants from "../pages/Plants";
 
 export const router = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/plants",
-        element: <TopRatedIndoorPlants />,
+        element: <Plants/>,
       },
     ],
   },

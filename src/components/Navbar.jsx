@@ -4,6 +4,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { HiMenu, HiX } from "react-icons/hi";
 import { MdLogout, MdOutlineLogin } from "react-icons/md";
 import { LiaUserPlusSolid } from "react-icons/lia";
+import logoImg from "../assets/logo.jpg";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
@@ -42,10 +43,10 @@ const Navbar = () => {
           >
             <HiMenu />
           </button>
-
+          <img src={logoImg} alt="" className="w-12 hidden md:flex" />
           <h1 className="text-xl font-bold">
             <span className="text-black">Green</span>
-            <span className="text-green-600">Nest</span>
+            <span className="text-green-600">Aura</span>
           </h1>
         </div>
 
@@ -110,7 +111,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center px-4 py-4 border-b">
           <h2 className="text-xl font-bold">
             <span className="text-black">Green</span>
-            <span className="text-green-600">Nest</span>
+            <span className="text-green-600">Aura</span>
           </h2>
 
           <button onClick={() => setMobileMenu(false)} className="text-2xl">

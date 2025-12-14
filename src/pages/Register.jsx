@@ -82,6 +82,7 @@ const Register = () => {
   };
   return (
     <div>
+      <Toaster position="top-right"/>
       <div className="w-11/12 mx-auto my-10">
         <div className="flex flex-col justify-items-center mx-auto gap-4">
           <div className="text-center mb-5">
@@ -94,7 +95,7 @@ const Register = () => {
                 <input
                   name="name"
                   type="text"
-                  className="input"
+                  className="input w-full"
                   placeholder="Name"
                   required
                 />
@@ -105,7 +106,7 @@ const Register = () => {
                 <input
                   name="url"
                   type="url"
-                  className="input"
+                  className="input w-full"
                   placeholder="Photo-URL"
                   required
                 />
@@ -114,7 +115,7 @@ const Register = () => {
                 <input
                   name="email"
                   type="email"
-                  className="input"
+                  className="input w-full"
                   placeholder="Email"
                   required
                 />

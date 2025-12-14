@@ -54,6 +54,7 @@ const Login = () => {
   };
   return (
     <div>
+      <Toaster position="top-right"/>
       <div className="w-11/12 mx-auto my-10">
         <div className="flex flex-col justify-items-center mx-auto gap-4 ">
           <div className="text-center mb-5 ">
@@ -65,7 +66,7 @@ const Login = () => {
                 <label className="label">Email</label>
                 <input
                   type="email"
-                  className="input"
+                  className="input w-full"
                   placeholder="Email"
                   name="email"
                   required
