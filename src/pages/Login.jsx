@@ -116,8 +116,11 @@ const Login = () => {
                     onClick={handleGoogleLogin}
                     className="btn btn-outline w-full flex items-center justify-center gap-2"
                   >
-                    <FcGoogle size={25} />
-                    Continue with Google
+                    <FcGoogle size={22} />
+                    <span className="hidden sm:inline">
+                      Continue with Google
+                    </span>
+                    <span className="inline sm:hidden">Google</span>
                   </button>
                 </div>
                 <p>
