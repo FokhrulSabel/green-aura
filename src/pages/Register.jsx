@@ -22,27 +22,29 @@ const Register = () => {
         const user = result.user;
         setUser(user);
         toast.success("Registered with Google!");
-        navigate(location.state ? location.state : "/");
+        navigate(location.state || "/");
       })
+
       .catch((error) => {
         setError(error.code);
+        toast.error("Google sign up failed!");
       });
-    toast.error("Sign Up unsuccessful!");
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
+
     const name = form.name.value;
+    const url = form.url.value;
+    const email = form.email.value;
+    const password = form.password.value;
     if (name.length < 5) {
       setNameError("Name must be more than 5 characters.");
       return;
     } else {
       setNameError("");
     }
-    const url = form.url.value;
-    const email = form.email.value;
-    const password = form.password.value;
 
     if (password.length < 6) {
       setPasswordError("Password must be at least 6 characters long.");
@@ -57,32 +59,50 @@ const Register = () => {
       setPasswordError("");
     }
 
+    // createUser(email, password)
+    //   .then((result) => {
+    //     const user = result.user;
+    //     updateUser({ displayName: name, photoURL: url })
+    //       .then(() => {
+    //         setUser({ ...user, displayName: name, photoURL: url });
+    //         navigate("./");
+    //       })
+    //       .catch((error) => {
+    //         // setUser(user);
+    //         setUser({ ...user, displayName: name, photoURL: url });
+    //       });
+
+    //     navigate(`${location.state ? location.state : "/"}`);
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     // const errorMessage = error.message;
+    //     // alert(errorMessage);
+    //     setError(errorCode);
+    //     toast.error("Sign Up unsuccessful!");
+    //   });
+
     createUser(email, password)
       .then((result) => {
-        const user = result.user;
-        updateUser({ displayName: name, photoURL: url })
-          .then(() => {
-            setUser({ ...user, displayName: name, photoURL: url });
-            navigate("./");
-          })
-          .catch((error) => {
-            // setUser(user);
-            setUser({ ...user, displayName: name, photoURL: url });
+        updateUser({ displayName: name, photoURL: url }).then(() => {
+          setUser({
+            ...result.user,
+            displayName: name,
+            photoURL: url,
           });
-
-        navigate(`${location.state ? location.state : "/"}`);
+          toast.success("Registration successful!");
+          form.reset();
+          navigate("/");
+        });
       })
       .catch((error) => {
-        const errorCode = error.code;
-        // const errorMessage = error.message;
-        // alert(errorMessage);
-        setError(errorCode);
-        toast.error("Sign Up unsuccessful!");
+        setError(error.code);
+        toast.error("Registration failed!");
       });
   };
   return (
     <div>
-      <Toaster position="top-right"/>
+      {/* <Toaster position="top-right" /> */}
       <div className="w-11/12 mx-auto my-10">
         <div className="flex flex-col justify-items-center mx-auto gap-4">
           <div className="text-center mb-5">

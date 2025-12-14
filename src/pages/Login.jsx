@@ -6,7 +6,6 @@ import { BiSolidHide, BiSolidShow } from "react-icons/bi";
 import toast, { Toaster } from "react-hot-toast";
 // import { toast } from "react-toastify";
 
-
 const Login = () => {
   const [error, setError] = useState("");
   const { logIn, setUser, googleSignIn } = use(AuthContext);
@@ -26,15 +25,17 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        toast.success("Login successful!");
+        navigate(location.state || "/");
         // console.log(user);
-        navigate(`${location.state ? location.state : "/"}`);
+        // navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         const errorCode = error.code;
         // const errorMessage = error.message;
         // alert(errorCode, errorMessage);
         setError(errorCode);
-        toast.error("Wrong email or password. Log In unsuccessful!");
+        toast.error("Wrong email or password. Please try again!");
       });
   };
 
@@ -54,7 +55,7 @@ const Login = () => {
   };
   return (
     <div>
-      <Toaster position="top-right"/>
+      <Toaster position="top-right" />
       <div className="w-11/12 mx-auto my-10">
         <div className="flex flex-col justify-items-center mx-auto gap-4 ">
           <div className="text-center mb-5 ">

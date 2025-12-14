@@ -4,7 +4,7 @@ import PlantCard from "../components/PlantCard";
 
 const Plants = () => {
   const {plants} = usePlants();
-  console.log(plants);
+//   console.log(plants);
   return (
     <div>
       <h1 className="text-3xl text-center font-bold my-4">All Plants</h1>
