@@ -4,15 +4,17 @@ import TopRatedIndoorPlants from "./TopRatedIndoorPlants";
 import PlantCareTips from "./PlantCareTips";
 import MeetOurGreenExperts from "./MeetOurGreenExperts";
 import EcoDecorIdeas from "./EcoDecorIdeas";
+import usePlants from "../Hooks/usePlants";
 
 const Home = () => {
+   const { plants, loading } = usePlants();
   return (
-    <main>
+    <main className="mt-4">
       <section>
         <CoverflowSwiper />
       </section>
 
-      <TopRatedIndoorPlants></TopRatedIndoorPlants>
+      <TopRatedIndoorPlants plants={plants}></TopRatedIndoorPlants>
       <PlantCareTips></PlantCareTips>
       <MeetOurGreenExperts></MeetOurGreenExperts>
       <EcoDecorIdeas></EcoDecorIdeas>

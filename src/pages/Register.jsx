@@ -21,6 +21,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        toast.success("Registered with Google!");
         navigate(location.state ? location.state : "/");
       })
       .catch((error) => {

@@ -5,7 +5,6 @@ import { HiMenu, HiX } from "react-icons/hi";
 import { MdLogout, MdOutlineLogin } from "react-icons/md";
 import { LiaUserPlusSolid } from "react-icons/lia";
 
-
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
 
@@ -29,7 +28,7 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => alert("Logged out successfully"))
+      .then(() => alert("Logged out successfully !"))
       .catch((err) => console.log(err));
   };
 
@@ -71,14 +70,16 @@ const Navbar = () => {
               <Link
                 to="/auth/login"
                 className="px-5 py-1.5 border border-green-600 text-green-600 rounded-full hover:bg-green-50 transition font-medium flex items-center gap-2"
-              ><MdOutlineLogin size={18} />
+              >
+                <MdOutlineLogin size={18} />
                 Login
               </Link>
 
               <Link
                 to="/auth/register"
                 className="px-5 py-1.5 bg-green-600 text-white rounded-full hover:bg-green-700 transition font-medium flex items-center gap-2"
-              ><LiaUserPlusSolid size={18} />
+              >
+                <LiaUserPlusSolid size={18} />
                 Register
               </Link>
             </div>

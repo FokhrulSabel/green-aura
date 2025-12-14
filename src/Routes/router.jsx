@@ -10,11 +10,13 @@ import LoadingPage from "../pages/LoadingPage";
 import TopRatedIndoorPlants from "../pages/TopRatedIndoorPlants";
 import MyProfile from "../pages/MyProfile";
 import ForgotPassword from "../pages/ForgotPassword";
+import ErrorPage from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout />,
+    errorElement: <ErrorPage/>,
     hydrateFallbackElement: <LoadingPage></LoadingPage>,
     children: [
       {
@@ -63,9 +65,9 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
   },
-  {
-    path: "/*",
-    element: <h2>Error404</h2>,
-  },
+  // {
+  //   path: "/*",
+  //   element: <h2>Error404</h2>,
+  // },
 ]);
 export default router;

@@ -3,8 +3,9 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { BiSolidHide, BiSolidShow } from "react-icons/bi";
-// import toast, { Toaster } from "react-hot-toast";
-import { toast } from "react-toastify";
+import toast, { Toaster } from "react-hot-toast";
+// import { toast } from "react-toastify";
+
 
 const Login = () => {
   const [error, setError] = useState("");
